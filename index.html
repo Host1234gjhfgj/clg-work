@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquaryfile.js"></script>
+    <style>
+        #div2{
+            height: 100px;
+            width: 100px;
+            border: 2px solid black;
+            position: absolute;
+            top: 50%;
+            margin-top: 0px;
+        }
+        .added{
+            background-color: rgb(255, 160, 122);
+            border-radius: 30px;
+            border: 3px solid rgb(124, 252, 0);
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+        }
+        #perent1{
+            position: absolute;
+            display: flex;
+            left: 25%;
+            top: 100px;
+            border: 2px solid red;
+            height: 500px;
+            width: 500px;
+            background-color: blue;
+        }
+        #perent2{
+            position: absolute;
+            background-color: aqua;
+           height: 250px;
+           width: 250px;
+           border: 3px solid green;
+            top: 25%;
+            left: 25%;
+        }
+        #perent3{
+            position: absolute;
+            left: 25%;
+            top: 25%;
+            height: 150px;
+            width: 150px;
+            border: 3px dotted blue;
+            background-color: chartreuse;
+        }
+        #ul{
+            position:absolute;
+            justify-content: center;
+            align-items: center;
+            background-color: lightpink;
+            left:20px;
+        }
+        ul{
+            border: 3px solid black;
+        }
+        img{
+            position: absolute;
+            height: 300px;
+            width: 300px;
+            
+
+        }
+        </style>
+    <script>
+        $(()=>{
+            $('#btn1').click(function(){
+
+                $('#p1').fadeToggle(1000)
+            })
+            $('#btn3').click(()=>{
+                let div=$('#img1');
+                div.animate({
+                   left:'25%',
+                   opacity:'0.5',
+                   borderRadius:'50%'
+                },2000),
+                div.animate({
+                    opacity:'1',
+                    top:'+=100px',
+                    borderRadius:'0'
+                },2000)
+                div.animate({
+                    left:'0px',
+                    opacity:'0.5',
+                    borderRadius:'50%'
+                },2000)
+                div.animate({
+                    opacity:'1',
+                    top:'-=100px',
+                    borderRadius:'0'
+                },2000,)
+            })                                   
+            $('#stop').click(()=>{
+                $('#img1').stop(true,true)
+            })
+                $('#div1').css({
+                    'height': '100px',
+                    'width': '100px',
+                    'position': 'absolute',
+                    'background-color':'blueviolet',
+                    'border': '1px solid rgb(243, 243, 3)'
+                })
+            $('#add').click(function(){
+                $('#div2').addClass('added')
+            })
+            $('#get').click(function(){
+                
+                   let a= $('#child').parentsUntil("#perent1");
+                   a.css({
+                    "background-color":"red",
+                    "border":"5px solid green"
+                   })
+                   let b= $('#child').parent();
+                   a.css({
+                    "background-color":"yellow",
+                   })
+                   let c= $('#child').parents(".box");
+                   c.css({
+                    "border-radius": "50px"
+                   })
+                   let d= $('#child').siblings()
+                   d.css({
+                    "color":"white"
+                   })
+                   let e= $('#child').a()
+                   e.css({
+                    "border":"5px solid blue"
+                   })
+                })
+            })
+            function loadDoc(){
+                var xhttp=new XMLHttpRequest();
+                xhttp.onreadystatechange=function(){
+                    if (this.readyState==0 && this.status==200) {
+                        document.getElementById("ajex").innerHTML=Request.responcetext
+                    }
+                }
+                xhttp.open("Get","file.json",true);
+                xhttp.send();
+            }
+    
+    
+    </script>
+</head>
+<body>    
+    <p id="p1">this is p tag</p>
+    <button id="btn1">hide</button>      <br>
+    <button id="btn2">css</button><br>
+    <button id="btn3">animation</button><br>
+    <button id="stop">stop</button><br>
+    <button id="add">add</button><br>
+    <button id="get">get</button><br>
+    <button id="btn1">click me</button><br>
+    <div id="div1" ></div>
+    <div id="div2"></div>
+    <div id="perent1" border="1px solid red" class="box">
+        <div id="perent2">
+            <div id="perent3" class="box">
+                <ul id="ul" name="ul">
+                    <li>list 11</li>
+                    <li>list 12</li>
+                    <li id="child">list 13</li>
+                    <li>list 14</li>
+                    <li>list 15</li>
+                </ul>
+            </div>
+        </div>
+    </div><br>
+    <div>
+
+        <img src="Screenshot 2022-12-22 152903.png" alt="img" id="img1">
+    </div>
+    <div id="ajex"></div>
+</body>
+</html>
