@@ -1,0 +1,33 @@
+{
+    "roll":"1",
+    "name":"daxit",
+    "age":"19",
+    "std":[
+        {
+            "name":"daxit",
+            "subject":"is",
+            "marks":"39"
+        },
+        {
+            "name":"vivek",
+            "subject":"wd",
+            "marks":"100"
+        },
+        {
+            "name":"raxit",
+            "subject":"iot",
+            "marks":"60"
+        },
+        {
+            "name":"samarth",
+            "subject":".net",
+            "marks":"40"
+        }
+    ],
+    "subjects":{
+        "is":"1",
+        "iot":"2",
+        "wd":"3"
+    }
+
+}
